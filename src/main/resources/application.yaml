@@ -1,0 +1,59 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active:
+      - dev
+    group:
+      local:
+        - site-local
+        - db-local
+      dev:
+        - site-dev
+        - db-dev
+    include:
+      - db
+      - my-service
+      - site
+  #  h2:
+  #    console:
+  #      enabled: true  # H2 Console? ???? ?? (H2 Console? H2 Database? UI? ????? ??)
+  datasource:
+    driver-class-name: org.mariadb
+    url: jdbc:h2:tcp://localhost/~/test
+    username: sa
+    password: sa
+  #  datasource:
+  #    url: mysql ??
+  #    username: ???
+  #    password: ????
+  #    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    generate-ddl: true
+    properties:
+      hibernate:
+        show-sql: true
+        ddl-auto: validation
+        format_sql: true
+
+  #multipart
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 5MB
+
+logging:
+  level:
+    org.hibernate: info
+    org.hibernate.SQL: debug
+    org.hibernate.type: trace
+    com.tutorial: debug
+
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: false
+
+JWT_SECRET:
