@@ -26,7 +26,7 @@ public class PatientService {
     private final PatientRepository patientRepository;
 
     public PatientResponseDto signup(PatientRequestDto requestDto) {
-        if (patientRepository.existsByloginId(requestDto.getLoginId())) {
+        if (patientRepository.existsByloginId(requestDto.loginId())) {
             throw new DuplicatedPatientLoginIdException();
         }
         Patient patient = requestDto.toPatient(passwordEncoder);

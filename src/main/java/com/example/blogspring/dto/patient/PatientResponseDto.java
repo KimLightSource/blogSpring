@@ -1,15 +1,7 @@
 package com.example.blogspring.dto.patient;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+import lombok.Builder;
+
 @Builder
-public class PatientResponseDto {
-    private String loginId;
-    
-}
+public record PatientResponseDto (String loginId) { }
